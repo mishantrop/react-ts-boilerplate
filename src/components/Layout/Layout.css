@@ -1,0 +1,161 @@
+@import '../../config.css';
+
+.content {
+    background-color: #f8f8f8;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    max-width: 100%;
+    width: 100%;
+
+    @media (--media-md) {
+        display: grid;
+        gap: 0 0;
+        grid-template-areas: "aside main" "footer footer";
+        grid-template-columns: var(--aside-width) 1fr;
+        grid-template-rows: 1fr max-content;
+        height: 100%;
+    }
+
+    @media (--media-xl) {
+        grid-template-areas: "aside main" "aside footer";
+    }
+}
+
+.aside {
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    grid-area: aside;
+    position: relative;
+    width: 100%;
+    z-index: 4;
+
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        background-color: var(--dark-blue-1);
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--dark-blue-4);
+        border-radius: 4px;
+        width: 4px;
+    }
+
+    @media (--media-md) {
+        background-color: var(--aside-background-desktop);
+        flex-shrink: 0;
+        height: 100%;
+        overflow: hidden;
+        overflow-y: auto;
+        padding: var(--aside-offset);
+        width: var(--aside-width);
+    }
+
+    @media (--media-xl) {
+        box-shadow: var(--common-shadow-hover);
+        position: relative;
+    }
+
+    &-inner {
+        background-color: var(--white);
+        box-shadow: none;
+        padding: 0 var(--aside-offset);
+
+        @media (--media-md) {
+            border-radius: var(--lg-border-radius);
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+            padding: 0;
+        }
+    }
+
+    &-header {
+        background-color: var(--white);
+        margin: 0 0 var(--offset-lg);
+        padding: var(--aside-offset) var(--aside-offset) 0;
+        position: relative;
+        z-index: 11;
+
+        @media (--media-md) {
+            padding: 0;
+        }
+    }
+
+    &-footer {
+        margin: 32px 0 0;
+    }
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    grid-area: main;
+    position: relative;
+}
+
+.footer {
+    background-color: var(--footer-background);
+    grid-area: footer;
+    position: relative;
+
+    @media (--media-md) {
+        box-shadow: var(--shadow-footer);
+        z-index: 5;
+    }
+
+    @media (--media-xl) {
+        box-shadow: none;
+        z-index: 3;
+    }
+}
+
+/* IE 10-11 SUPPORT */
+@media (--media-md) and (-ms-high-contrast: none) {
+    .content {
+        display: -ms-grid;
+        -ms-grid-columns: calc(var(--aside-width) - 13px) 1fr;
+        -ms-grid-rows: 1fr auto;
+        overflow-y: hidden;
+    }
+
+    .aside {
+        -ms-grid-column: 1;
+        -ms-grid-column-span: 1;
+        -ms-grid-row: 1;
+        -ms-grid-row-span: 2;
+        height: calc(100% + 64px);
+        margin-top: -32px;
+        scrollbar-face-color: var(--dark-blue-4);
+        scrollbar-shadow-color: var(--dark-blue-1);
+        scrollbar-track-color: var(--dark-blue-1);
+        z-index: 0;
+    }
+
+    .aside-header {
+        margin-top: 32px;
+    }
+
+    .aside-footer {
+        padding-bottom: 64px;
+    }
+
+    .footer {
+        -ms-grid-column: 2;
+        -ms-grid-column-span: 1;
+        -ms-grid-row: 2;
+        -ms-grid-row-span: 1;
+    }
+
+    .main {
+        background-color: #fff;
+        -ms-grid-column: 2;
+        -ms-grid-column-span: 1;
+        -ms-grid-row: 1;
+        -ms-grid-row-span: 1;
+    }
+}

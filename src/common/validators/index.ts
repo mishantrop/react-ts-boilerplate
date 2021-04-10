@@ -1,0 +1,1 @@
+export { isDiffers } from './isDiffers'

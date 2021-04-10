@@ -1,0 +1,65 @@
+@import '../../config.css';
+
+.header {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    padding: 0;
+    width: 100%;
+}
+
+.logo {
+    &-image {
+        height: 34px;
+        width: 227px;
+
+        &--desktop {
+            display: none;
+
+            @media (--media-md) {
+                display: flex;
+            }
+        }
+
+        &--mobile {
+            display: flex;
+
+            & > svg {
+                height: 32px;
+                width: 32px;
+            }
+
+            @media (--media-md) {
+                display: none;
+            }
+        }
+    }
+
+    &-wrapper {
+        display: flex;
+        height: 34px;
+
+        &--align {
+            &-center {
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+.link {
+    &--desktop {
+        display: none;
+
+        @media (--media-md) {
+            display: inline;
+        }
+    }
+
+    &--mobile {
+        @media (--media-md) {
+            display: none;
+        }
+    }
+}

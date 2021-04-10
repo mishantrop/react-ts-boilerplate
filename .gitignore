@@ -1,0 +1,8 @@
+dist
+node_modules
+npm-debug*
+reports
+
+.DS_Store
+.eslintcache
+.stylelintcache
